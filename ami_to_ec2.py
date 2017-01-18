@@ -1,33 +1,37 @@
 # FILE: ami_to_ec2.py
 # AUTHOR: Zhenyu Zhao
 # DESC:
-#   This program reads configuration from a seperate file/module and then 
-#   restore EC2 instances from AMIs
+#   This program reads configuration from config module and then 
+#   launch EC2 instances from AMIs
 # HISTORY:
-#   2017-1-9 Created
+#   2017-1-1 Created
 
 import boto3
 import datetime
 import time
 import sys
 from time import mktime
-# Configuration file in same directory
-import ami_to_ec2_config 
 import logging
+# Custom config module in same directory
+import ami_to_ec2_config 
 
 def main():
-  # Housekeeping
+  # Get a logger object
   logger = logging.getLogger('ami_to_ec2')
-  handler = logging.FileHandler(ami_to_ec2_config.logfile)
+  # Get logfile pathname from config module
+  logfile = ami_to_ec2_config.logfile
+  # Associate logfile with logger
+  handler = logging.FileHandler(logfile)
   formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
   handler.setFormatter(formatter)
+  # Associate logfile with logger again
   logger.addHandler(handler)
   logger.setLevel(logging.INFO)
   signature = "_bkp_"
 
-  print "Restore started\n"
+  print "Restore started"
   
-  # Read image info from config file
+  # Get list of images info from config file
   images = ami_to_ec2_config.images
 
   # Get EC2 resouce 
@@ -35,7 +39,7 @@ def main():
   #print "ec2=", ec2
   # The above commnad returns ec2 = ec2.ServiceResource()
 
-  # Iterate the list
+  # Iterate the list of images
   for image in images:
     argv = {}
 
@@ -51,6 +55,10 @@ def main():
     if max_count:
       argv['MaxCount'] = int(max_count)
 
+    security_group = image['securitygroup']
+    if security_group:
+      argv['SecurityGroupIds'] =  security_group
+
     instance_type = image['instancetype']
     if instance_type:
       argv['InstanceType'] = instance_type
@@ -60,7 +68,7 @@ def main():
     # Create instances
     instances = ec2.create_instances(**argv)
     for instance in instances:
-      print instance.id
+      print "AMI ID=" + image_id + "==>" + "Instance ID=" + instance.id
      
       # What time is it now?
       current_datetime = datetime.datetime.now()
@@ -68,13 +76,11 @@ def main():
 
       # Add a Name tage to the instance
       instance.create_tags(Tags=[{'Key': 'Name',
-                                  'Value': server_name_pattern + 'Restored' + ' ' + date_stamp}])
+                                  'Value': server_name_pattern + ' Restored ' + ' ' + date_stamp}])
     # for
-
   # for
 
-  #print "We are dne here"
- 
+  print "Restore ended"
 # End of main()
 
 # If this script is executed as a standalone program, Python's __main__ built-in
