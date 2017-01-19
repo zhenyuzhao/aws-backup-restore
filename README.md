@@ -19,4 +19,6 @@ This repo includes two Pythin programs as follows:
 
 <h2>Useful Link</h2>
 
+<a href="https://aws.amazon.com/sdk-for-python/">AWS SDK for Python (Boto3)</a>
 <a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html">Boto 3 Quick Start</a>
+<a href="https://aws.amazon.com/cli/">AWS Command Line Interface</a>
