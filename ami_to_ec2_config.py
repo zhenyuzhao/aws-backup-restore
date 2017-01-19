@@ -11,7 +11,7 @@ logfile = "/tmp/ami_to_ec2.log"
 # AMIs to be launched
 images = [
     dict(
-        id = 'ami-1ae1090c', # AMI ID
+        id = 'ami-90876c86', # AMI ID
         name = "Zhen Linux Test Restored", # AMI description
         mincount = 1, # MinCount
         maxcount = 1, # MaxCount
@@ -26,8 +26,8 @@ images = [
         pattern = "Zhen Linux Test" # First part of Name tag of the image to restore
     ),
     dict(
-        id = 'ami-a3e40cb5', # AMI ID
-        name = "Zhen Linux Test Restored", # AMI description
+        id = 'ami-44806b52', # AMI ID
+        name = "Zhen Windows Test Restored", # AMI description
         mincount = 1, # MinCount
         maxcount = 1, # MaxCount
         #keyname='', # access key

@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 # FILE: ec2_to_ami_config.py
-# AUTHOR: ZZ
+# AUTHOR: Zhenyu Zhao
 # DESC:
+#   Configuration module for ec2_to_ami.py
 # HISTORY:
 #   2017-1-2 Created
 
@@ -13,14 +14,14 @@ logfile = "/tmp/ec2_to_ami.log"
 # Servers to be backed up
 servers = [
     dict(
-        id = 'i-0002dab6e11437025', # Instance ID
+        id = 'ii-0002dab6e11437025', # Instance ID
         name = "Zhen Linux Test", # Server name
         #profile = "profile_one", # Account authentication profile name as set in the boto config file
         #region = "eu-east-1", #ec2 server region
         pattern = "Zhen Linux Test" # First part of Name tag of the server to backup
     ),
     dict(
-        id = 'i-0387a522860c0f5b0', # Instance ID
+        id = 'ii-0387a522860c0f5b0', # Instance ID
         name = "Zhen Windows Test", # Server name
         #profile = "profile_one", # Account authentication profile name as set in the boto config file
         #region = "eu-east-1", #ec2 server region

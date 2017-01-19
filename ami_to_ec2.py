@@ -34,10 +34,16 @@ def main():
   # Get list of images info from config file
   images = ami_to_ec2_config.images
 
-  # Get EC2 resouce 
-  ec2 = boto3.resource('ec2')
-  #print "ec2=", ec2
-  # The above commnad returns ec2 = ec2.ServiceResource()
+  # Create a default session
+  # Create a EC2 resource 
+  # The below statement returns ec2.ServiceResource()
+  try:
+    ec2 = boto3.resource('ec2')
+  except Exception, e:
+    # Failed
+    logger.error("Resource ec2 creation: " + e.message)
+    print "Error: " + e.message
+    return
 
   # Iterate the list of images
   for image in images:
@@ -66,7 +72,15 @@ def main():
     server_name_pattern = image['pattern']
 
     # Create instances
-    instances = ec2.create_instances(**argv)
+    try:
+      instances = ec2.create_instances(**argv)
+    except Exception, e:
+      # Failed
+      logger.error("Resource ec2 creation: " + e.message)
+      print "Error: " + e.message
+      # Skip the current iteration pass
+      continue
+
     for instance in instances:
       print "AMI ID=" + image_id + "==>" + "Instance ID=" + instance.id
      

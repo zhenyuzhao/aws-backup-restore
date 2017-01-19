@@ -45,6 +45,7 @@ def main():
   except Exception, e:
     # Failed
     logger.error("Resource ec2 creation: " + e.message)
+    print "Error: " + e.message
     return 
 
   #
@@ -91,6 +92,7 @@ def main():
     except Exception, e:
       # Failed
       logger.error("Backup " + server_name + ": " + e.message)
+      print "Error: " + e.message
       # Skip the current iteration pass
       continue
 
@@ -125,6 +127,7 @@ def main():
     except Exception, e:
       # Failed
       logger.error("Backup " + server_name + ": " + e.message)
+      print "Error: " + e.message
       # Skip the current iteration pass
       continue
 
@@ -151,6 +154,7 @@ def main():
           image.deregister()
         except Exception, e:
           logger.error("Backup " + server_name + ": " + e.message)
+          print "Error: " + e.message 
           # Skip the current iteration pass
           continue
 
