@@ -2,7 +2,7 @@
 # AUTHOR: Zhenyu Zhao
 # DESC:
 #   This program reads configuration from a seperate module and then back up EC2 instances.
-#   It also deletes images that is older than the retention ploicy
+#   It also deletes images that is older than what the retention ploicy specifies.
 # HISTORY:
 #   201-12-30 Created
 
@@ -11,12 +11,12 @@ import datetime
 import time
 import sys
 from time import mktime
+import logging
 # Configuration file in same directory
 import ec2_to_ami_config 
-import logging
 
 def main():
-  # Get a logger object
+  # Instantiate a logger object
   logger = logging.getLogger('ec2_to_ami')
   # Get logfile pathname from config module
   logfile = ec2_to_ami_config.logfile
@@ -40,9 +40,17 @@ def main():
   # Create a default session
   # Create a EC2 resource 
   # The below statement returns ec2.ServiceResource()
-  ec2 = boto3.resource('ec2')
+  try:
+    ec2 = boto3.resource('ec2')
+  except Exception, e:
+    # Failed
+    logger.error("Resource ec2 creation: " + e.message)
+    return 
 
+  #
   # Iterate the list of servers
+  # Each server is a dictionary object 
+  #
   for server in servers:
     server_id = server['id']
     server_name = server['name']
@@ -112,7 +120,13 @@ def main():
     # Create a filter
     filters = [{"Name":"tag:Name", "Values":[server_name_pattern + signature + "*"]}]
     # Returned a list of images
-    images = ec2.images.filter(Filters=filters)
+    try:
+      images = ec2.images.filter(Filters=filters)
+    except Exception, e:
+      # Failed
+      logger.error("Backup " + server_name + ": " + e.message)
+      # Skip the current iteration pass
+      continue
 
     for image in images:
       # Get image name 
@@ -133,7 +147,13 @@ def main():
       diff_minutes = (current_timestamp - image_timestamp) / 60
 
       if (diff_minutes > backup_retention):
-        image.deregister()
+        try:
+          image.deregister()
+        except Exception, e:
+          logger.error("Backup " + server_name + ": " + e.message)
+          # Skip the current iteration pass
+          continue
+
         print "\t", image_name, " deleted"
         logger.info("Deleted AMI " + image_name )
       else:
