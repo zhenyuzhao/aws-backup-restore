@@ -25,7 +25,7 @@ This repo includes two Pythin programs as follows:
 <li>AWS SDK for Python (Boto 3)
 <li>Python 2.7 and above</li>
 
-Note that the AWS CLI tool is Python based and it shares code base with Botocore, which is used by Boto3. As a result, it makes strategic sense to implement the solution in Python/Boto3
+Note that the AWS CLI tool is Python based and it shares the code base with Botocore, which is used by Boto3. As a result, it makes strategic sense to implement the solution in Python/Boto3
 <h2>Useful Link</h2>
 
 <a href="https://aws.amazon.com/sdk-for-python/">AWS SDK for Python (Boto3)</a>
