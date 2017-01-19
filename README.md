@@ -20,6 +20,12 @@ This repo includes two Pythin programs as follows:
 <li>The main script (<i>ami_to_ec2.py</i>) is to retrieve configuration information from the configuration module and perform restore from AMIs.</li>
 <li>The configuration module (<i>ec2_to_ami_config.py</i>) is to store custom parameters such as AMI ID, number of instances, instance type, and etc.</li>
 
+<h2>Tehnical Platform</h2>
+<li>AWS CLI</li>
+<li>AWS SDK for Python (Boto 3)
+<li>Python 2.7 and above</li>
+
+Note that the AWS CLI tool is Python based and it shares code base with Botocore, which is used by Boto3. As a result, it makes strategic sense to implement the solution in Python/Boto3
 <h2>Useful Link</h2>
 
 <a href="https://aws.amazon.com/sdk-for-python/">AWS SDK for Python (Boto3)</a>
