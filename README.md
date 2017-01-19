@@ -5,6 +5,40 @@
 <li>Script the process to use the AMI creation</li>
 <li>Incorporate all the configuration changes required for the new instance to be functional</li>
 
+The following table compares four AWS DR methods in terms of RPO, RTO and cost:
+<table style="width:100%">
+<tr>
+    <th></th>
+    <th>RTO</th> 
+    <th>RPO</th>
+    <th>Cost</th>
+</tr>
+<tr>
+    <th>Backup and Restore</th>
+    <td>As long as it takes to restore systems from backup</th> 
+    <td>Since last backup. This depends on schedule and can be a few hours or more than a day or a week</th>
+    <td>Extremely cost-effective. It depends on the retention policy. Backup can be retained for few days of a week or a month </th>
+</tr>
+<tr>
+    <th>Pilot Light</th>
+    <td>As long as it takes to detect and auto scale up replacement system</th> 
+    <td>Depends on replication type</th>
+    <td>Very cost-effective due to fewer 24/7 resources required</th>
+</tr>
+<tr>  
+    <th>Fully Working Low-Capacity Standby</th>
+    <td>For critical load: as long as it takes to fail over. For all other load, as long as it takes to scale further</th> 
+    <td>Depends on replication type</th>
+    <td>Cost saving and IT footprint samller than Multi-Site Active-Active</th>
+</tr>
+<tr>
+    <th>Multi-Site Active-Active</th>
+    <td>As long as it takes to fail over</th> 
+    <td>Depends on replication type</th>
+    <td>Expensive due to maintaining redundant resources</th>
+</tr>
+</table>
+
 <h2>What Does This Repo Include?</h2>
 This repo includes two Pythin programs as follows: 
 <li>Backup: <i>ec2_to_ami.py</i> and <i>ec2_to_ami_config.py</i></li>
