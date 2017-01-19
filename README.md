@@ -19,4 +19,4 @@ This repo includes two Pythin programs as follows:
 
 <h2>Useful Link</h2>
 
-<<a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html">Boto 3 Quick Start</a>>
+<a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html">Boto 3 Quick Start</a>
