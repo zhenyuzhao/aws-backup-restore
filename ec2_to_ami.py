@@ -116,7 +116,7 @@ def main():
     #  
     # Deregister old images
     #
-    print "\t", "===Deleting old AMIs(Retention policy is " + str(backup_retention) +" mins)==="
+    print "\t", "===Deleting old AMIs (Retention policy is " + str(backup_retention) +" mins)==="
   
     # Get a list of matching images
     # Create a filter
