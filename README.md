@@ -39,6 +39,8 @@ The following table compares four AWS DR methods in terms of RPO, RTO and cost:
 </tr>
 </table>
 
+Note: RTO is about how quickly must the system recover. RPO is about how much data can you afford to lose.
+
 <h2>What Does This Repo Include?</h2>
 This repo includes two Pythin programs as follows: 
 <li>Backup: <i>ec2_to_ami.py</i> and <i>ec2_to_ami_config.py</i></li>
