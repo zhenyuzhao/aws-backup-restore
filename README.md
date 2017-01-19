@@ -1,4 +1,4 @@
-<h1>The Cloud Code Snippet Assignemnt Requirements</h1> 
+<h2>The Cloud Code Snippet Assignemnt Requirements</h2> 
 <li>Design a Windows/Linux EC2 backup strategies using AMI</li>
 <li>Research on various backup/restore strategies using AMI</li>
 <li>Script the process to schedule the AMI creation</li>
