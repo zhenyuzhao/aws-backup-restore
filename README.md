@@ -11,4 +11,3 @@ Two programs are:
 <li>Backup: ec2_to_ami.py and ec2_to_ami_config.py</li>
 <li>Restore: ami_to_ec2.py and ami_to_ec2_config.py</li>
 
-ec2_to_ami.py uses ec2_to_ami_config.py while ami_to_ec2.py uses ami_to_ec2_config.py
