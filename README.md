@@ -1,6 +1,6 @@
 This repo contains two Python scripts intended for backup and restore of EC2 instances.
 
-The Cloud code snippet assignemnt requirements are: 
+<b>The Cloud code snippet assignemnt requirements are:</b> 
 <li>Design a Windows/Linux EC2 backup strategies using AMI</li>
 <li>Research on various backup/restore strategies using AMI</li>
 <li>Script the process to schedule the AMI creation</li>
