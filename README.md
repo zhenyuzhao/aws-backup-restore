@@ -11,11 +11,14 @@ This repo includes two Pythin programs as follows:
 <li>Restore: <i>ami_to_ec2.py</i> and <i>ami_to_ec2_config.py</i></li>
 
 <h2>What Does The Backup Program Do?</h2>
-<li>The back up program include the main script (<i>ec2_to_ami.py</i>) and the configuration module (<i>ec2_to_ami_config.py</i>)</li>
-<li>The main script (ec2_to_ami.py) is to retrieve configuration information from the configuration module and perform backup. It also deletes old images per retention policy setting specified in the configuration module</li>
+<li>The backup program includes the main script (<i>ec2_to_ami.py</i>) and the configuration module (<i>ec2_to_ami_config.py</i>)</li>
+<li>The main script (<i>ec2_to_ami.py</i>) is to retrieve configuration information from the configuration module and perform backup. It also deletes old images per retention policy setting specified in the configuration module</li>
 <li>The configuration module (ec2_to_ami_config.py) is to store custom parameters such is server name, instance ID and retention policy</li>
 
 <h2>What Does The Restore Program Do?</h2>
+<li>The restore program includes the main script (<i>ami_to_ec2.py</i>) and the configuration module (<i>ami_to_ec2_config.py</i>)</li>
+<li>The main script (<i>ami_to_ec2.py</i>) is to retrieve configuration information from the configuration module and perform restore from AMIs</li>
+<li>The configuration module (<i>ec2_to_ami_config.py</i>) is to store custom parameters such as AMI ID, number of instances, and instance type</li>
 
 <h2>Useful Link</h2>
 
